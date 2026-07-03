@@ -1,4 +1,3 @@
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,16 +37,16 @@ Index · HTML
   --r-md:     14px;
   --r-lg:     20px;
 }
- 
+
 /* ============ RESET ============ */
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:var(--ink);min-height:100vh;overflow-x:hidden}
- 
+
 /* ============ SCREENS ============ */
 .screen{display:none;min-height:100vh;flex-direction:column}
 .screen.active{display:flex}
- 
+
 /* ============ HOME ============ */
 #home{background:var(--brown1)}
 .home-hero{
@@ -66,9 +65,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
   display:flex;justify-content:space-between;align-items:center;
   font-size:12px;color:rgba(245,204,106,.7);border-top:1px solid rgba(200,134,10,.2)
 }
- 
+
 .home-body{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px}
- 
+
 /* LINE SECTIONS */
 .line-section{border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-m)}
 .line-header{
@@ -84,7 +83,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
   margin-left:auto;background:rgba(255,255,255,.18);
   border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:#fff;white-space:nowrap
 }
- 
+
 .zone-list{background:var(--cream0);display:flex;flex-direction:column;gap:0}
 .zone-btn{
   display:flex;align-items:center;gap:14px;padding:13px 18px;
@@ -101,7 +100,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .zone-text h4{font-size:13.5px;font-weight:700;color:var(--ink)}
 .zone-text p{font-size:11.5px;color:var(--muted);margin-top:2px}
 .zone-arrow{color:var(--cream3);font-size:18px;flex-shrink:0}
- 
+
 /* Dashboard shortcut */
 .dash-btn{
   display:flex;align-items:center;justify-content:center;gap:10px;
@@ -110,7 +109,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
   color:var(--gold2);font-size:14px;font-weight:700;transition:all .2s
 }
 .dash-btn:hover{background:rgba(200,134,10,.16);border-color:var(--gold2)}
- 
+
 /* ============ APP HEADER ============ */
 .app-header{
   background:var(--brown1);padding:12px 16px;
@@ -131,10 +130,10 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .hdr-ml1{background:var(--ml1);color:#fff}
 .hdr-ml3{background:var(--ml3);color:#fff}
 .hdr-shared{background:var(--brown3);color:var(--gold3)}
- 
+
 /* ============ FORM CONTENT ============ */
 .fcontent{flex:1;padding:14px;max-width:640px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:12px;padding-bottom:32px}
- 
+
 /* ============ CARDS ============ */
 .card{background:var(--cream0);border-radius:var(--r-md);box-shadow:var(--shadow-s);overflow:hidden}
 .card-head{
@@ -147,7 +146,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .ch-gold{background:var(--gold1);color:var(--brown1)}
 .ch-red{background:var(--red);color:#fff}
 .card-body{padding:14px}
- 
+
 /* ============ FIELDS ============ */
 .field{margin-bottom:12px}
 .field:last-child{margin-bottom:0}
@@ -160,7 +159,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .inp:focus{border-color:var(--gold1);background:var(--cream0);outline:none}
 .inp-row{display:flex;gap:8px}
 .inp-row .inp{flex:1}
- 
+
 /* ============ STATUS GRID ============ */
 .status-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .status-btn{
@@ -170,7 +169,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 }
 .status-btn.ok.sel{border-color:var(--ok);background:var(--okl);color:var(--ok)}
 .status-btn.fail.sel{border-color:var(--red);background:var(--redl);color:var(--red)}
- 
+
 /* ============ TIME TABLE ============ */
 .time-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .time-table{border-collapse:collapse;min-width:100%;font-size:12px}
@@ -196,7 +195,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .time-table input:focus,.time-table select:focus{
   outline:1px solid var(--gold1);background:var(--warnl);border-radius:3px
 }
- 
+
 /* ============ PRODUCT GRID ============ */
 .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .prod-btn{
@@ -207,7 +206,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .prod-btn .pcode{font-size:10px;color:var(--muted);font-weight:700;display:block;margin-bottom:3px}
 .prod-btn:hover,.prod-btn:active{border-color:var(--gold1);background:var(--warnl)}
 .prod-btn.sel{border-color:var(--ok);background:var(--okl);color:var(--ok)}
- 
+
 /* ============ SHIFT TOGGLE ============ */
 .shift-row{display:flex;gap:8px}
 .shift-btn{
@@ -216,7 +215,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
   font-size:13px;font-weight:700;color:var(--ink);transition:all .15s
 }
 .shift-btn.sel{border-color:var(--ml1);background:var(--ml1l);color:var(--ml1)}
- 
+
 /* ============ SUBMIT ============ */
 .submit-wrap{padding:0}
 .btn-submit{
@@ -229,7 +228,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .bs-ml3{background:linear-gradient(135deg,var(--ml3),#25A85A);color:#fff;box-shadow:0 4px 16px rgba(26,122,60,.35)}
 .bs-gold{background:linear-gradient(135deg,var(--gold1),var(--gold2));color:var(--brown1);box-shadow:0 4px 16px rgba(200,134,10,.4)}
 .bs-red{background:linear-gradient(135deg,var(--red),#E74C3C);color:#fff;box-shadow:0 4px 16px rgba(192,57,43,.35)}
- 
+
 /* ============ SUCCESS ============ */
 #success{background:var(--okl);align-items:center;justify-content:center;padding:30px 20px}
 .success-wrap{width:100%;max-width:380px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
@@ -250,11 +249,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
   padding:13px 32px;border:none;border-radius:var(--r-sm);
   background:var(--ok);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px
 }
- 
+
 /* ============ DASHBOARD ============ */
 #dashboard{background:var(--cream1)}
 .dash-content{flex:1;padding:14px;max-width:960px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:12px;padding-bottom:32px}
- 
+
 /* TABS */
 .tab-bar{display:flex;gap:0;background:var(--cream0);border-radius:var(--r-md);box-shadow:var(--shadow-s);overflow:hidden}
 .tab-btn2{
@@ -265,7 +264,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .tab-btn2.active{color:var(--brown1);border-bottom-color:var(--gold1);background:var(--cream1)}
 .tab-content{display:none}
 .tab-content.active{display:block}
- 
+
 /* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
 .stat-box{
@@ -274,7 +273,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 }
 .stat-num{font-size:26px;font-weight:800;color:var(--brown2)}
 .stat-lbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;font-weight:600}
- 
+
 /* LOG TABLE */
 .log-wrap{overflow-x:auto;border-radius:var(--r-md);box-shadow:var(--shadow-s)}
 .log-table{width:100%;border-collapse:collapse;min-width:700px}
@@ -285,7 +284,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .log-table td{padding:8px 12px;border:1px solid var(--cream2);font-size:12.5px;vertical-align:top}
 .log-table tr:nth-child(even) td{background:var(--cream1)}
 .log-table tr:hover td{background:var(--warnl)}
- 
+
 /* TAGS */
 .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700}
 .tag-ml1{background:var(--ml1l);color:var(--ml1)}
@@ -293,7 +292,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .tag-shared{background:var(--cream2);color:var(--brown2)}
 .tag-ok{background:var(--okl);color:var(--ok)}
 .tag-fail{background:var(--redl);color:var(--red)}
- 
+
 /* FILTER */
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .filter-bar select,.filter-bar input{
@@ -301,17 +300,17 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
   font-size:13px;background:var(--cream0);color:var(--ink)
 }
 .filter-bar select:focus,.filter-bar input:focus{border-color:var(--gold1);outline:none}
- 
+
 .btn-action{
   padding:9px 16px;border:none;border-radius:var(--r-sm);
   font-size:13px;font-weight:700;cursor:pointer;transition:all .15s
 }
 .btn-export{background:var(--ok);color:#fff}
 .btn-clear{background:var(--cream0);color:var(--red);border:1.5px solid var(--red)}
- 
+
 .empty-state{text-align:center;padding:40px 20px;color:var(--muted)}
 .empty-state .ei{font-size:40px;margin-bottom:8px}
- 
+
 /* ============ QR PAGE ============ */
 #qrpage{background:var(--cream2)}
 .qr-content{flex:1;padding:14px;max-width:800px;width:100%;margin:0 auto;padding-bottom:32px;display:flex;flex-direction:column;gap:14px}
@@ -332,7 +331,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .qr-wrap{background:#fff;padding:8px;border-radius:8px;border:2px solid var(--cream3)}
 .qr-name{font-size:13px;font-weight:700;color:var(--brown2);text-align:center}
 .qr-sub{font-size:11px;color:var(--muted);text-align:center;line-height:1.4}
- 
+
 /* ============ RECIPE TABLE (CAOTEC) ============ */
 .recipe-info{
   background:var(--warnl);border:1.5px solid var(--gold3);
@@ -342,7 +341,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 .recipe-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--cream3);font-size:12px}
 .recipe-row:last-child{border-bottom:none}
 .recipe-row b{color:var(--brown1)}
- 
+
 /* ============ UTIL ============ */
 .info-box{
   background:var(--redl);border:1.5px solid #F1948A;border-radius:var(--r-sm);
@@ -350,7 +349,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream1);color:
 }
 .info-box.warn{background:var(--warnl);border-color:var(--gold3);color:var(--warn)}
 textarea.inp{min-height:64px;resize:vertical}
- 
+
 @media(max-width:400px){
   .prod-grid{grid-template-columns:1fr 1fr}
   .home-title{font-size:19px}
@@ -363,7 +362,7 @@ textarea.inp{min-height:64px;resize:vertical}
 </style>
 </head>
 <body>
- 
+
 <!-- ========================================================= -->
 <!-- HOME                                                       -->
 <!-- ========================================================= -->
@@ -377,9 +376,9 @@ textarea.inp{min-height:64px;resize:vertical}
     <span id="home-date"></span>
     <span id="home-time"></span>
   </div>
- 
+
   <div class="home-body">
- 
+
     <!-- ML-1 -->
     <div class="line-section">
       <div class="line-header ml1">
@@ -395,12 +394,12 @@ textarea.inp{min-height:64px;resize:vertical}
         </button>
         <button class="zone-btn" onclick="go('ml1-machine-op')">
           <div class="zone-icon zi-ml1">⚙️</div>
-          <div class="zone-text"><h4>Machine Operator (Naladchik)</h4><p>Packaging · Labelling · Film batch · Pallets</p></div>
+          <div class="zone-text"><h4>Machine Operator</h4><p>Packaging · Labelling · Film batch · Pallets</p></div>
           <div class="zone-arrow">›</div>
         </button>
         <button class="zone-btn" onclick="go('ml1-helper')">
           <div class="zone-icon zi-ml1">📦</div>
-          <div class="zone-text"><h4>Helper (Ukladchik)</h4><p>Show Box · Weight · Date · Gluing</p></div>
+          <div class="zone-text"><h4>Helper</h4><p>Show Box · Weight · Date · Gluing</p></div>
           <div class="zone-arrow">›</div>
         </button>
         <button class="zone-btn" onclick="go('metal-detector')">
@@ -410,7 +409,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </button>
       </div>
     </div>
- 
+
     <!-- ML-3 -->
     <div class="line-section">
       <div class="line-header ml3">
@@ -426,12 +425,12 @@ textarea.inp{min-height:64px;resize:vertical}
         </button>
         <button class="zone-btn" onclick="go('ml3-machine-op')">
           <div class="zone-icon zi-ml3">⚙️</div>
-          <div class="zone-text"><h4>Machine Operator (Naladchik)</h4><p>Packaging · Labelling · Film batch · Pallets</p></div>
+          <div class="zone-text"><h4>Machine Operator</h4><p>Packaging · Labelling · Film batch · Pallets</p></div>
           <div class="zone-arrow">›</div>
         </button>
         <button class="zone-btn" onclick="go('ml3-helper')">
           <div class="zone-icon zi-ml3">📦</div>
-          <div class="zone-text"><h4>Helper (Ukladchik)</h4><p>Show Box · Weight · Date · Gluing</p></div>
+          <div class="zone-text"><h4>Helper</h4><p>Show Box · Weight · Date · Gluing</p></div>
           <div class="zone-arrow">›</div>
         </button>
         <button class="zone-btn" onclick="go('metal-detector')">
@@ -441,7 +440,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </button>
       </div>
     </div>
- 
+
     <!-- SHARED -->
     <div class="line-section">
       <div class="line-header shared">
@@ -457,17 +456,17 @@ textarea.inp{min-height:64px;resize:vertical}
         </button>
         <button class="zone-btn" onclick="go('buhler')">
           <div class="zone-icon zi-shared">🔩</div>
-          <div class="zone-text"><h4>Bühler Operator</h4><p>Product · Batch № · Date</p></div>
+          <div class="zone-text"><h4>Bühler</h4><p>Product · Batch № · Date</p></div>
           <div class="zone-arrow">›</div>
         </button>
       </div>
     </div>
- 
+
     <button class="dash-btn" onclick="go('dashboard')">📊 Production Journal</button>
     <button class="dash-btn" style="border-color:rgba(91,42,14,.4);color:var(--gold3);background:rgba(91,42,14,.2)" onclick="go('qrpage')">📱 Print QR Codes</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- ML-1 PROCESS OPERATOR                                      -->
 <!-- ========================================================= -->
@@ -478,7 +477,7 @@ textarea.inp{min-height:64px;resize:vertical}
     <span class="hdr-line-badge hdr-ml1">ML-1</span>
   </div>
   <div class="fcontent">
- 
+
     <!-- META -->
     <div class="card">
       <div class="card-head ch-ml1">📋 Shift Info</div>
@@ -496,7 +495,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field"><label>Supervisor</label><input class="inp" type="text" id="ml1po-sup" placeholder="Full name"></div>
       </div>
     </div>
- 
+
     <!-- TEMPERING -->
     <div class="card">
       <div class="card-head ch-ml1">🌡️ Tempering Control (min 2× per shift)</div>
@@ -504,7 +503,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="time-table-wrap">
           <table class="time-table">
             <tr><th>Parameter</th><th>08:00</th><th>15:00</th></tr>
-            <tr><td class="row-label">Product article</td><td><input type="text" id="ml1-temp-art1"></td><td><input type="text" id="ml1-temp-art2"></td></tr>
+            <tr><td class="row-label">Product article</td><td><select id="ml1-temp-art1" style="min-width:130px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td><td><select id="ml1-temp-art2" style="min-width:130px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td></tr>
             <tr><td class="row-label">Tempering Machine №</td><td><input type="text" id="ml1-temp-mach1"></td><td><input type="text" id="ml1-temp-mach2"></td></tr>
             <tr><td class="row-label">Temperature regime</td>
               <td><select id="ml1-temp-s1"><option value="ok">✅ Match</option><option value="fail">❌ Deviation</option></select></td>
@@ -515,7 +514,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field" style="margin-top:10px"><label>Deviations / measures (Supervisor fills)</label><textarea class="inp" id="ml1-temp-note" placeholder="Specify malfunction, measures taken..."></textarea></div>
       </div>
     </div>
- 
+
     <!-- WEIGHING -->
     <div class="card">
       <div class="card-head ch-ml1">⚖️ Depositor Control Weighing (min 2× per shift, ≥3 molds in a row)</div>
@@ -524,8 +523,8 @@ textarea.inp{min-height:64px;resize:vertical}
           <table class="time-table">
             <tr><th>Parameter</th><th>#1</th><th>#2</th><th>#3</th><th>#4</th></tr>
             <tr><td class="row-label">Product article</td>
-              <td><input type="text" id="ml1-w-art1"></td><td><input type="text" id="ml1-w-art2"></td>
-              <td><input type="text" id="ml1-w-art3"></td><td><input type="text" id="ml1-w-art4"></td></tr>
+              <td><select id="ml1-w-art1" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td><td><select id="ml1-w-art2" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td>
+              <td><select id="ml1-w-art3" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td><td><select id="ml1-w-art4" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td></tr>
             <tr><td class="row-label">Control time</td>
               <td><input type="time" id="ml1-w-t1"></td><td><input type="time" id="ml1-w-t2"></td>
               <td><input type="time" id="ml1-w-t3"></td><td><input type="time" id="ml1-w-t4"></td></tr>
@@ -548,7 +547,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <!-- QUALITY -->
     <div class="card">
       <div class="card-head ch-ml1">🔬 Quality Indicators (appearance — continuous; taste/smell — every 3h)</div>
@@ -557,8 +556,8 @@ textarea.inp{min-height:64px;resize:vertical}
           <table class="time-table">
             <tr><th>Parameter</th><th>08:00</th><th>11:00</th><th>14:00</th><th>17:00</th><th>20:00</th></tr>
             <tr><td class="row-label">Product article</td>
-              <td><input type="text" id="ml1-q-art1"></td><td><input type="text" id="ml1-q-art2"></td>
-              <td><input type="text" id="ml1-q-art3"></td><td><input type="text" id="ml1-q-art4"></td><td><input type="text" id="ml1-q-art5"></td></tr>
+              <td><select id="ml1-q-art1" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td><td><select id="ml1-q-art2" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td>
+              <td><select id="ml1-q-art3" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td><td><select id="ml1-q-art4" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td><td><select id="ml1-q-art5" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td></tr>
             <tr><td class="row-label">Foreign taste/smell</td>
               <td><select id="ml1-q-ts1"><option value="no">✅ No</option><option value="yes">❌ Yes</option></select></td>
               <td><select id="ml1-q-ts2"><option value="no">✅ No</option><option value="yes">❌ Yes</option></select></td>
@@ -576,7 +575,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field" style="margin-top:10px"><label>Defect description (Supervisor fills)</label><textarea class="inp" id="ml1-q-note" placeholder="Product, reason, type of defect, measures taken..."></textarea></div>
       </div>
     </div>
- 
+
     <!-- NET WEIGHT -->
     <!-- NET WEIGHT ML-1: Product article + Time + 20 pcs + Middleweight, 4 rows -->
     <div class="card">
@@ -595,7 +594,7 @@ textarea.inp{min-height:64px;resize:vertical}
               <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th>
             </tr>
             <tr>
-              <td rowspan="4"><input type="text" id="ml1-nw-art" style="min-width:80px"></td>
+              <td rowspan="4"><select id="ml1-nw-art" style="min-width:130px;font-size:10px"><option value="">—</option><option value="OPCB001">OPCB001 — Dubai Chocolate Katrina AE</option><option value="OPCB002">OPCB002 — Dubai Choc Dark Katrina AE</option><option value="OPCB006">OPCB006 — Dubai Choc White 45g AE</option><option value="XAE001">XAE001 — BABYFOX Milk Choc 45g</option><option value="OPCB003">OPCB003 — Dubai Kids Milk 45g</option><option value="KOCB001">KOCB001 — Dubai Choc Katrina RU</option><option value="KOCB002">KOCB002 — Dubai Choc Dark Katrina RU</option><option value="KOCB003">KOCB003 — Dubai Choc White 45g RU</option><option value="KOCB004">KOCB004 — Dubai Kids 45g KA</option><option value="EPCB001">EPCB001 — Dubai Choc Katrina EU</option><option value="EPCB002">EPCB002 — Dubai Choc Dark Katrina EU</option><option value="EPCB003">EPCB003 — Dubai Choc White 45g EU</option><option value="XPCB005">XPCB005 — Dubai Milk La Louviere 45g</option><option value="XPCB006">XPCB006 — Dubai Dark La Louviere 45g</option><option value="OPCB004">OPCB004 — Dubai Choc Katrina open box</option></select></td>
               <td style="font-weight:700;color:var(--ml1);white-space:nowrap">8:00</td>
               <td><input type="number" id="ml1-nw-r1-1" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-2" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-3" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-4" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-5" oninput="calcAvg20('ml1-nw-r1')"></td>
               <td><input type="number" id="ml1-nw-r1-6" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-7" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-8" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-9" oninput="calcAvg20('ml1-nw-r1')"></td><td><input type="number" id="ml1-nw-r1-10" oninput="calcAvg20('ml1-nw-r1')"></td>
@@ -631,7 +630,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <!-- LINE PERFORMANCE ML-1: speed rows 12/11/10/9/8/7/6 + Downtime row + time header -->
     <div class="card">
       <div class="card-head ch-ml1">📈 Line Performance Graph — Mold casting speed / min</div>
@@ -666,11 +665,11 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field" style="margin-top:8px"><label>Shift comments</label><textarea class="inp" id="ml1-comments" placeholder="Stoppages, remarks..."></textarea></div>
       </div>
     </div>
- 
+
     <button class="btn-submit bs-ml1" onclick="saveForm('ml1-process-op')">✅ Submit ML-1 Process Operator Record</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- ML-3 PROCESS OPERATOR                                      -->
 <!-- ========================================================= -->
@@ -681,7 +680,7 @@ textarea.inp{min-height:64px;resize:vertical}
     <span class="hdr-line-badge hdr-ml3">ML-3</span>
   </div>
   <div class="fcontent">
- 
+
     <div class="card">
       <div class="card-head ch-ml3">📋 Shift Info</div>
       <div class="card-body">
@@ -698,7 +697,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field"><label>Supervisor</label><input class="inp" type="text" id="ml3po-sup" placeholder="Full name"></div>
       </div>
     </div>
- 
+
     <!-- TEMPERING ML3 — только 1 дозатор -->
     <div class="card">
       <div class="card-head ch-ml3">🌡️ Tempering Control (min 2× per shift)</div>
@@ -706,7 +705,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="time-table-wrap">
           <table class="time-table">
             <tr><th>Parameter</th><th>08:00</th><th>15:00</th></tr>
-            <tr><td class="row-label">Product article</td><td><input type="text" id="ml3-temp-art1"></td><td><input type="text" id="ml3-temp-art2"></td></tr>
+            <tr><td class="row-label">Product article</td><td><select id="ml3-temp-art1" style="min-width:130px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td><td><select id="ml3-temp-art2" style="min-width:130px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td></tr>
             <tr><td class="row-label">Tempering Machine №</td><td><input type="text" id="ml3-temp-mach1"></td><td><input type="text" id="ml3-temp-mach2"></td></tr>
             <tr><td class="row-label">Temperature regime</td>
               <td><select id="ml3-temp-s1"><option value="ok">✅ Match</option><option value="fail">❌ Deviation</option></select></td>
@@ -716,7 +715,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field" style="margin-top:10px"><label>Deviations / measures</label><textarea class="inp" id="ml3-temp-note" placeholder="Specify malfunction, measures taken..."></textarea></div>
       </div>
     </div>
- 
+
     <!-- ML-3 WEIGHING: только Depositor №1 -->
     <div class="card">
       <div class="card-head ch-ml3">⚖️ Depositor №1 Control Weighing (ML-3 — 1 depositor only)</div>
@@ -725,8 +724,8 @@ textarea.inp{min-height:64px;resize:vertical}
           <table class="time-table">
             <tr><th>Parameter</th><th>#1</th><th>#2</th><th>#3</th><th>#4</th></tr>
             <tr><td class="row-label">Product article</td>
-              <td><input type="text" id="ml3-w-art1"></td><td><input type="text" id="ml3-w-art2"></td>
-              <td><input type="text" id="ml3-w-art3"></td><td><input type="text" id="ml3-w-art4"></td></tr>
+              <td><select id="ml3-w-art1" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td><td><select id="ml3-w-art2" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td>
+              <td><select id="ml3-w-art3" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td><td><select id="ml3-w-art4" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td></tr>
             <tr><td class="row-label">Control time</td>
               <td><input type="time" id="ml3-w-t1"></td><td><input type="time" id="ml3-w-t2"></td>
               <td><input type="time" id="ml3-w-t3"></td><td><input type="time" id="ml3-w-t4"></td></tr>
@@ -743,7 +742,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <!-- QUALITY ML3 -->
     <div class="card">
       <div class="card-head ch-ml3">🔬 Quality Indicators</div>
@@ -752,8 +751,8 @@ textarea.inp{min-height:64px;resize:vertical}
           <table class="time-table">
             <tr><th>Parameter</th><th>08:00</th><th>11:00</th><th>14:00</th><th>17:00</th><th>20:00</th></tr>
             <tr><td class="row-label">Product article</td>
-              <td><input type="text" id="ml3-q-art1"></td><td><input type="text" id="ml3-q-art2"></td>
-              <td><input type="text" id="ml3-q-art3"></td><td><input type="text" id="ml3-q-art4"></td><td><input type="text" id="ml3-q-art5"></td></tr>
+              <td><select id="ml3-q-art1" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td><td><select id="ml3-q-art2" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td>
+              <td><select id="ml3-q-art3" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td><td><select id="ml3-q-art4" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td><td><select id="ml3-q-art5" style="min-width:110px;font-size:10px"><option value="">—</option><option value="OPCH011">OPCH011 — Dubai Kids 12g</option><option value="OPCH012">OPCH012 — Dubai Kids 24g</option><option value="OPCH013">OPCH013 — Dubai Kids 12g-6</option><option value="OPEO001">OPEO001 — Babyfox 12g</option><option value="OPEO002">OPEO002 — Babyfox 24g</option></select></td></tr>
             <tr><td class="row-label">Foreign taste/smell</td>
               <td><select id="ml3-q-ts1"><option value="no">✅ No</option><option value="yes">❌ Yes</option></select></td>
               <td><select id="ml3-q-ts2"><option value="no">✅ No</option><option value="yes">❌ Yes</option></select></td>
@@ -771,7 +770,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field" style="margin-top:10px"><label>Marriage description (Supervisor fills)</label><textarea class="inp" id="ml3-q-note" placeholder="Product, reason, type of defect, measures..."></textarea></div>
       </div>
     </div>
- 
+
     <!-- LINE PERFORMANCE ML3: speeds 20/18/16/14/12/11/10/9/8/7/6 + Downtime -->
     <div class="card">
       <div class="card-head ch-ml3">📈 Line Performance Graph — Mold casting speed / min</div>
@@ -806,11 +805,11 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field" style="margin-top:8px"><label>Shift comments</label><textarea class="inp" id="ml3-comments" placeholder="Stoppages, remarks..."></textarea></div>
       </div>
     </div>
- 
+
     <button class="btn-submit bs-ml3" onclick="saveForm('ml3-process-op')">✅ Submit ML-3 Process Operator Record</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- MACHINE OPERATOR (NALADCHIK) — ML-1 & ML-3              -->
 <!-- ========================================================= -->
@@ -822,7 +821,7 @@ textarea.inp{min-height:64px;resize:vertical}
   </div>
   <div class="fcontent" id="ml1-mop-content"></div>
 </div>
- 
+
 <div id="ml3-machine-op" class="screen">
   <div class="app-header">
     <button class="btn-back" onclick="go('home')">‹</button>
@@ -831,28 +830,28 @@ textarea.inp{min-height:64px;resize:vertical}
   </div>
   <div class="fcontent" id="ml3-mop-content"></div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- HELPER (UKLADCHIK) — ML-1 & ML-3                        -->
 <!-- ========================================================= -->
 <div id="ml1-helper" class="screen">
   <div class="app-header">
     <button class="btn-back" onclick="go('home')">‹</button>
-    <div class="hdr-info"><h2>Helper (Ukladchik)</h2><p>ML-1 · Show Box Control</p></div>
+    <div class="hdr-info"><h2>Helper</h2><p>ML-1 · Show Box Control</p></div>
     <span class="hdr-line-badge hdr-ml1">ML-1</span>
   </div>
   <div class="fcontent" id="ml1-hlp-content"></div>
 </div>
- 
+
 <div id="ml3-helper" class="screen">
   <div class="app-header">
     <button class="btn-back" onclick="go('home')">‹</button>
-    <div class="hdr-info"><h2>Helper (Ukladchik)</h2><p>ML-3 · Show Box Control</p></div>
+    <div class="hdr-info"><h2>Helper</h2><p>ML-3 · Show Box Control</p></div>
     <span class="hdr-line-badge hdr-ml3">ML-3</span>
   </div>
   <div class="fcontent" id="ml3-hlp-content"></div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- METAL DETECTOR                                             -->
 <!-- ========================================================= -->
@@ -874,7 +873,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <div class="card">
       <div class="card-head ch-red">🔍 Metal Detector Checks (4× per shift + each product change)</div>
       <div class="card-body">
@@ -929,11 +928,11 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <button class="btn-submit bs-red" onclick="saveForm('metal-detector')">✅ Submit Metal Detector Record</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- CAOTEC                                                     -->
 <!-- ========================================================= -->
@@ -944,7 +943,7 @@ textarea.inp{min-height:64px;resize:vertical}
     <span class="hdr-line-badge hdr-shared">CAOTEC</span>
   </div>
   <div class="fcontent">
- 
+
     <div class="card">
       <div class="card-head ch-brown">📋 Shift Info</div>
       <div class="card-body">
@@ -955,7 +954,7 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="field"><label>Operator name</label><input class="inp" type="text" id="ct-name" placeholder="Full name"></div>
       </div>
     </div>
- 
+
     <div class="card">
       <div class="card-head ch-gold">🍫 Select Semi-finished Product</div>
       <div class="card-body">
@@ -972,31 +971,31 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <!-- RECIPE INFO dynamic -->
     <div id="ct-recipe-block"></div>
- 
+
     <!-- KNEADING TABLE dynamic -->
     <div id="ct-kneading-block"></div>
- 
+
     <div class="card" id="ct-submit-card" style="display:none">
       <div class="card-body">
         <div class="field"><label>Notes</label><textarea class="inp" id="ct-notes" placeholder="Different batches of same raw material — specify batch № and quantity of each..."></textarea></div>
         <div class="field"><label>Supervisor</label><input class="inp" type="text" id="ct-supervisor" placeholder="Full name"></div>
       </div>
     </div>
- 
+
     <button class="btn-submit bs-gold" id="ct-submit-btn" style="display:none" onclick="saveForm('caotec')">✅ Submit CAOTEC Record</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- BÜHLER                                                     -->
 <!-- ========================================================= -->
 <div id="buhler" class="screen">
   <div class="app-header">
     <button class="btn-back" onclick="go('home')">‹</button>
-    <div class="hdr-info"><h2>Bühler Operator</h2><p>Production Record</p></div>
+    <div class="hdr-info"><h2>Bühler</h2><p>Production Record</p></div>
     <span class="hdr-line-badge hdr-shared">BÜHLER</span>
   </div>
   <div class="fcontent">
@@ -1027,7 +1026,7 @@ textarea.inp{min-height:64px;resize:vertical}
     <button class="btn-submit bs-gold" onclick="saveForm('buhler')">✅ Submit Bühler Record</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- SUCCESS                                                    -->
 <!-- ========================================================= -->
@@ -1040,7 +1039,7 @@ textarea.inp{min-height:64px;resize:vertical}
     <button class="btn-home" onclick="go('home')">← Back to Home</button>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- DASHBOARD                                                  -->
 <!-- ========================================================= -->
@@ -1051,9 +1050,9 @@ textarea.inp{min-height:64px;resize:vertical}
     <span class="hdr-line-badge hdr-shared">LOG</span>
   </div>
   <div class="dash-content">
- 
+
     <div class="stats-grid" id="dash-stats"></div>
- 
+
     <!-- TABS: ALL · ML-1 · ML-3 -->
     <div class="tab-bar">
       <button class="tab-btn2 active" onclick="switchLogTab('all',this)">All Lines</button>
@@ -1061,7 +1060,7 @@ textarea.inp{min-height:64px;resize:vertical}
       <button class="tab-btn2" onclick="switchLogTab('ml3',this)">🟢 ML-3</button>
       <button class="tab-btn2" onclick="switchLogTab('shared',this)">🏭 Shared</button>
     </div>
- 
+
     <div class="card">
       <div class="card-body">
         <div class="filter-bar">
@@ -1083,7 +1082,7 @@ textarea.inp{min-height:64px;resize:vertical}
         </div>
       </div>
     </div>
- 
+
     <div class="log-wrap">
       <table class="log-table">
         <thead>
@@ -1097,7 +1096,7 @@ textarea.inp{min-height:64px;resize:vertical}
     </div>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- QR PAGE                                                    -->
 <!-- ========================================================= -->
@@ -1108,16 +1107,16 @@ textarea.inp{min-height:64px;resize:vertical}
     <span class="hdr-line-badge hdr-shared" onclick="window.print()" style="cursor:pointer">🖨️ Print</span>
   </div>
   <div class="qr-content">
- 
+
     <div class="card"><div class="card-head ch-ml1">🔵 Moulding Line 1 — ML-1</div>
       <div class="qr-grid" style="padding:14px" id="qr-ml1-grid"></div></div>
- 
+
     <div class="card"><div class="card-head ch-ml3">🟢 Moulding Line 3 — ML-3</div>
       <div class="qr-grid" style="padding:14px" id="qr-ml3-grid"></div></div>
- 
+
     <div class="card"><div class="card-head ch-brown">🏭 Shared Zones</div>
       <div class="qr-grid" style="padding:14px" id="qr-shared-grid"></div></div>
- 
+
     <div class="card">
       <div class="card-head ch-gold">📌 Placement guide</div>
       <div class="card-body" style="font-size:13.5px;line-height:1.7;color:var(--brown2)">
@@ -1134,7 +1133,7 @@ textarea.inp{min-height:64px;resize:vertical}
     </div>
   </div>
 </div>
- 
+
 <!-- ========================================================= -->
 <!-- JAVASCRIPT                                                 -->
 <!-- ========================================================= -->
@@ -1142,7 +1141,7 @@ textarea.inp{min-height:64px;resize:vertical}
 // ===== DB & GOOGLE SHEETS =====
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx1M4wNSg_LwR-xLFaaGQX_rBK5Hb5kiOQUGXqB0BRW5VzUTvDyVzkQsG27FTo20Fub/exec';
 let db = JSON.parse(localStorage.getItem('choco_db') || '[]');
- 
+
 async function sendToSheets(record) {
   if(!SHEETS_URL || SHEETS_URL.includes('PASTE')) return;
   try {
@@ -1157,7 +1156,7 @@ async function sendToSheets(record) {
     console.warn('⚠️ Sheets send error:', e);
   }
 }
- 
+
 async function loadFromSheets() {
   if(!SHEETS_URL || SHEETS_URL.includes('PASTE')) return;
   try {
@@ -1188,25 +1187,41 @@ async function loadFromSheets() {
     console.warn('⚠️ Sheets load error:', e);
   }
 }
- 
+
 function saveDB() {
   localStorage.setItem('choco_db', JSON.stringify(db));
   if(db.length > 0) sendToSheets(db[0]);
 }
- 
+
 // ===== PRODUCTS =====
-const PRODUCTS = [
-  {code:'OPCB002',name:'Dubai Choc Dark 45g'},
-  {code:'OPCB001',name:'Dubai Choc Milk 45g'},
-  {code:'OPCB006',name:'Dubai Choc White 45g'},
-  {code:'OPSB003',name:'Dubai Kids 45g'},
-  {code:'XAE001', name:'Baby Fox 45g'},
-  {code:'OPEO002',name:'Baby Fox 24g'},
-  {code:'OPEO001',name:'Baby Fox 12g'},
-  {code:'OPCH012',name:'Dubai Kids 24g'},
-  {code:'OPCH011',name:'Dubai Kids 12g'},
+// ML-1: все продукты 45g → Show Box 30 шт
+const ML1_PRODUCTS = [
+  {code:'OPCB001',name:'Dubai Chocolate Katrina AE',        line:'ML-1',qty:30,g:45},
+  {code:'OPCB002',name:'Dubai Chocolate Dark Katrina AE',   line:'ML-1',qty:30,g:45},
+  {code:'OPCB006',name:'Dubai Chocolate White Katrina 45g AE', line:'ML-1',qty:30,g:45},
+  {code:'XAE001', name:'BABYFOX Milk Chocolate 45g',        line:'ML-1',qty:30,g:45},
+  {code:'OPCB003',name:'Dubai Kids Milk Chocolate 45g',     line:'ML-1',qty:30,g:45},
+  {code:'OPCB004',name:'Dubai Chocolate Katrina open box',  line:'ML-1',qty:30,g:45},
+  {code:'KOCB001',name:'Dubai Chocolate Katrina RU',        line:'ML-1',qty:30,g:45},
+  {code:'KOCB002',name:'Dubai Chocolate Dark Katrina RU',   line:'ML-1',qty:30,g:45},
+  {code:'KOCB003',name:'Dubai Chocolate White Katrina 45g RU', line:'ML-1',qty:30,g:45},
+  {code:'KOCB004',name:'Dubai Kids Milk Chocolate 45g KA',  line:'ML-1',qty:30,g:45},
+  {code:'EPCB001',name:'Dubai Chocolate Katrina EU',        line:'ML-1',qty:30,g:45},
+  {code:'EPCB002',name:'Dubai Chocolate Dark Katrina EU',   line:'ML-1',qty:30,g:45},
+  {code:'EPCB003',name:'Dubai Chocolate White Katrina 45g EU', line:'ML-1',qty:30,g:45},
+  {code:'XPCB005',name:'Dubai Chocolate Milk La Louviere 45g*30', line:'ML-1',qty:30,g:45},
+  {code:'XPCB006',name:'Dubai Chocolate Dark La Louviere 45g*30', line:'ML-1',qty:30,g:45},
 ];
- 
+// ML-3: 12g → 100 шт, 24g → 30 шт
+const ML3_PRODUCTS = [
+  {code:'OPCH011',name:'Dubai Kids Milk Chocolate 12g',     line:'ML-3',qty:100,g:12},
+  {code:'OPCH012',name:'Dubai Kids Milk Chocolate 24g',     line:'ML-3',qty:30, g:24},
+  {code:'OPCH013',name:'Dubai Kids Milk Chocolate 12g x6',  line:'ML-3',qty:100,g:12},
+  {code:'OPEO001',name:'Babyfox Milk Chocolate 12g',        line:'ML-3',qty:100,g:12},
+  {code:'OPEO002',name:'Babyfox Milk Chocolate 24g',        line:'ML-3',qty:30, g:24},
+];
+const ALL_PRODUCTS = [...ML1_PRODUCTS, ...ML3_PRODUCTS];
+
 // ===== RECIPES =====
 const RECIPES = {
   babyfox45: {
@@ -1251,11 +1266,11 @@ const RECIPES = {
     ]
   }
 };
- 
+
 // ===== STATE =====
 let curShift = '', curProd = '', curBhProd = '', curBhCode = '', curCaotecProd = '';
 let curLogTab = 'all';
- 
+
 // ===== NAV =====
 function go(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1269,7 +1284,7 @@ function go(id) {
   if(id==='ml3-helper' && !document.getElementById('ml3-hlp-content').children.length) buildHelper('ml3');
   updateClock();
 }
- 
+
 // ===== CLOCK =====
 function updateClock(){
   const now = new Date();
@@ -1279,13 +1294,79 @@ function updateClock(){
   const ht = document.getElementById('home-time'); if(ht) ht.textContent = t;
 }
 updateClock(); setInterval(updateClock, 30000);
- 
+
 // Set today's date on all date inputs
 window.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().split('T')[0];
   document.querySelectorAll('input[type=date]').forEach(i => i.value = today);
+  fillProductDropdowns();
 });
- 
+
+// Fill all product select dropdowns in the document
+function fillProductDropdowns() {
+  // ML-1 tempering article selects
+  ['ml1-temp-art1','ml1-temp-art2'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.tagName === 'SELECT') {
+      el.innerHTML = '<option value="">— Select —</option>' +
+        ML1_PRODUCTS.map(p=>`<option value="${p.code}">${p.code} — ${p.name}</option>`).join('');
+    }
+  });
+  // ML-3 tempering article selects
+  ['ml3-temp-art1','ml3-temp-art2'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.tagName === 'SELECT') {
+      el.innerHTML = '<option value="">— Select —</option>' +
+        ML3_PRODUCTS.map(p=>`<option value="${p.code}">${p.code} — ${p.name}</option>`).join('');
+    }
+  });
+  // ML-1 weighing article selects
+  ['ml1-w-art1','ml1-w-art2','ml1-w-art3','ml1-w-art4'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.tagName === 'INPUT') {
+      // Replace input with select
+      const sel = document.createElement('select');
+      sel.id = id; sel.style.cssText = 'width:100%;border:none;background:transparent;font-size:10px;min-width:100px';
+      sel.innerHTML = '<option value="">—</option>' +
+        ML1_PRODUCTS.map(p=>`<option value="${p.code}">${p.code}</option>`).join('');
+      el.parentNode.replaceChild(sel, el);
+    }
+  });
+  // ML-3 weighing article selects
+  ['ml3-w-art1','ml3-w-art2','ml3-w-art3','ml3-w-art4'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.tagName === 'INPUT') {
+      const sel = document.createElement('select');
+      sel.id = id; sel.style.cssText = 'width:100%;border:none;background:transparent;font-size:10px;min-width:100px';
+      sel.innerHTML = '<option value="">—</option>' +
+        ML3_PRODUCTS.map(p=>`<option value="${p.code}">${p.code}</option>`).join('');
+      el.parentNode.replaceChild(sel, el);
+    }
+  });
+  // ML-1 quality article selects
+  ['ml1-q-art1','ml1-q-art2','ml1-q-art3','ml1-q-art4','ml1-q-art5'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.tagName === 'INPUT') {
+      const sel = document.createElement('select');
+      sel.id = id; sel.style.cssText = 'width:100%;border:none;background:transparent;font-size:10px;min-width:100px';
+      sel.innerHTML = '<option value="">—</option>' +
+        ML1_PRODUCTS.map(p=>`<option value="${p.code}">${p.code}</option>`).join('');
+      el.parentNode.replaceChild(sel, el);
+    }
+  });
+  // ML-3 quality article selects
+  ['ml3-q-art1','ml3-q-art2','ml3-q-art3','ml3-q-art4','ml3-q-art5'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && el.tagName === 'INPUT') {
+      const sel = document.createElement('select');
+      sel.id = id; sel.style.cssText = 'width:100%;border:none;background:transparent;font-size:10px;min-width:100px';
+      sel.innerHTML = '<option value="">—</option>' +
+        ML3_PRODUCTS.map(p=>`<option value="${p.code}">${p.code}</option>`).join('');
+      el.parentNode.replaceChild(sel, el);
+    }
+  });
+}
+
 // ===== SELECTIONS =====
 function selShift(btn, val) {
   btn.closest('.shift-row').querySelectorAll('.shift-btn').forEach(b => b.classList.remove('sel'));
@@ -1304,16 +1385,16 @@ function selCaotecProd(btn, key, name) {
   btn.classList.add('sel'); curCaotecProd = key;
   buildCaotecRecipe(key, name);
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
 // ===== CAOTEC RECIPE =====
 function buildCaotecRecipe(key, overrideName) {
   const rec = RECIPES[key];
@@ -1329,7 +1410,7 @@ function buildCaotecRecipe(key, overrideName) {
         </div>
       </div>
     </div>`;
- 
+
   // Header row
   const cols = rec.ingredients.map(i=>`<th>${i.name}<br><small>${i.norm}kg</small></th>`).join('');
   const rows = Array.from({length:10},(_,r)=>`
@@ -1341,7 +1422,7 @@ function buildCaotecRecipe(key, overrideName) {
       ${rec.ingredients.map((_,c)=>`<td><input type="text" id="ct-r${r+1}c${c}" style="min-width:70px" placeholder="batch №"></td>`).join('')}
       <td><select id="ct-ok${r+1}"><option value="ok">✅ OK</option><option value="fail">❌ Error</option></select></td>
     </tr>`).join('');
- 
+
   kb.innerHTML = `
     <div class="card">
       <div class="card-head ch-brown">📋 Kneading — Batch Numbers (up to 10 batches)</div>
@@ -1361,11 +1442,11 @@ function buildCaotecRecipe(key, overrideName) {
         </div>
       </div>
     </div>`;
- 
+
   document.getElementById('ct-submit-card').style.display = '';
   document.getElementById('ct-submit-btn').style.display = '';
 }
- 
+
 // ===== MACHINE OPERATOR (NALADCHIK) — dynamic build =====
 function buildMachineOp(line) {
   const id = `${line}-mop-content`;
@@ -1375,7 +1456,7 @@ function buildMachineOp(line) {
   const label = line==='ml1' ? 'ML-1' : 'ML-3';
   const speeds = line==='ml1' ? [450,400] : [600,500,330,300];
   const speedRows = speeds.map(s=>`<tr><td style="font-weight:700;color:var(--muted)">${s}</td>${Array(25).fill('<td><input type="checkbox" style="width:16px;height:16px"></td>').join('')}</tr>`).join('');
- 
+
   el.innerHTML = `
     <div class="card">
       <div class="card-head ${col}">📋 Shift Info — ${label} Packaging Area</div>
@@ -1387,7 +1468,7 @@ function buildMachineOp(line) {
         <div class="field"><label>Operator name</label><input class="inp" type="text" id="${line}-mop-name" placeholder="Full name"></div>
       </div>
     </div>
- 
+
     <div class="card">
       <div class="card-head ${col}">🏷️ Packaging & Labelling Quality (every hour)</div>
       <div class="card-body">
@@ -1404,26 +1485,31 @@ function buildMachineOp(line) {
         </div>
       </div>
     </div>
- 
+
     <div class="card">
       <div class="card-head ${col}">📦 Pallets — Quantity per shift</div>
       <div class="card-body">
         <div class="inp-row">
           <div class="field" style="flex:1"><label>Number of pallets</label><input class="inp" type="number" id="${line}-pallets" placeholder="e.g. 12" min="0"></div>
-          <div class="field" style="flex:1"><label>Product article</label><input class="inp" type="text" id="${line}-pallet-art" placeholder="Article №"></div>
+        </div>
+        <div class="field"><label>Product</label>
+          <select class="inp" id="${line}-pallet-art">
+            <option value="">— Select product —</option>
+            ${(line==='ml1' ? ML1_PRODUCTS : ML3_PRODUCTS).map(p=>`<option value="${p.code}">${p.code} — ${p.name}</option>`).join('')}
+          </select>
         </div>
       </div>
     </div>
- 
+
     <div class="card">
       <div class="card-head ${col}">🎞️ Film & Show Box Batch Numbers (every hour)</div>
       <div class="card-body">
         <div class="time-table-wrap">
           <table class="time-table">
-            <tr><th>Time</th><th>Product Article</th><th>Film Batch №</th><th>Film Mfg. Date</th><th>Show Box Batch №</th><th>Show Box Mfg. Date</th></tr>
+            <tr><th>Time</th><th>Product</th><th>Film Batch №</th><th>Film Mfg. Date</th><th>Show Box Batch №</th><th>Show Box Mfg. Date</th></tr>
             ${['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'].map((t,i)=>`
             <tr><td>${t}</td>
-              <td><input type="text" id="${line}-fb-art${i}"></td>
+              <td><select id="${line}-fb-art${i}" style="min-width:120px;font-size:11px"><option value="">—</option>${(line==='ml1'?ML1_PRODUCTS:ML3_PRODUCTS).map(p=>`<option value="${p.code}">${p.code} — ${p.name}</option>`).join('')}</select></td>
               <td><input type="text" id="${line}-fb-film${i}"></td>
               <td><input type="text" id="${line}-fb-filmdt${i}"></td>
               <td><input type="text" id="${line}-fb-sb${i}"></td>
@@ -1437,11 +1523,11 @@ function buildMachineOp(line) {
         </div>
       </div>
     </div>
- 
+
     <button class="btn-submit ${bs}" onclick="saveForm('${line}-machine-op')">✅ Submit ${label} Machine Operator Record</button>
   `;
 }
- 
+
 // ===== HELPER (UKLADCHIK) =====
 function buildHelper(line) {
   const id = `${line}-hlp-content`;
@@ -1449,46 +1535,80 @@ function buildHelper(line) {
   const col = line==='ml1' ? 'ch-ml1' : 'ch-ml3';
   const bs  = line==='ml1' ? 'bs-ml1' : 'bs-ml3';
   const label = line==='ml1' ? 'ML-1' : 'ML-3';
- 
-  const times = ['8-00','9-00','10-00','11-00','12-00','13-00','14-00','15-00','16-00','17-00','18-00','19-00','20-00'];
-  const params = ['Name of the product','Quantity per Show Box','Date on chocolate bar','Date on Show Box','Gluing seams','Weight of Show Box, g'];
- 
+  const prods = line==='ml1' ? ML1_PRODUCTS : ML3_PRODUCTS;
+  const today = new Date().toISOString().split('T')[0];
+  const times = ['8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
+
+  const prodOpts = `<option value="">— Select —</option>${prods.map(p=>`<option value="${p.code}" data-qty="${p.qty}">${p.code} — ${p.name}</option>`).join('')}`;
+
   el.innerHTML = `
     <div class="card">
       <div class="card-head ${col}">📋 Shift Info — ${label} Helper</div>
       <div class="card-body">
         <div class="inp-row">
-          <div class="field" style="flex:1"><label>Date</label><input class="inp" type="date" id="${line}-hlp-date" value="${new Date().toISOString().split('T')[0]}"></div>
+          <div class="field" style="flex:1"><label>Date</label><input class="inp" type="date" id="${line}-hlp-date" value="${today}"></div>
           <div class="field" style="flex:1"><label>Shift №</label><select class="inp" id="${line}-hlp-shift"><option>1 (Day)</option><option>2 (Night)</option></select></div>
         </div>
         <div class="field"><label>Supervisor name</label><input class="inp" type="text" id="${line}-hlp-sup" placeholder="Full name"></div>
         <div class="field"><label>Helper names</label><input class="inp" type="text" id="${line}-hlp-names" placeholder="All helpers"></div>
       </div>
     </div>
- 
+
     <div class="card">
       <div class="card-head ${col}">📦 Show Box Control (every hour)</div>
       <div class="card-body">
         <div class="time-table-wrap">
           <table class="time-table">
-            <tr><th>Parameter</th>${times.map(t=>`<th>${t}</th>`).join('')}</tr>
-            ${params.map((p,pi)=>`
-            <tr><td class="row-label">${p}</td>
-              ${times.map((_,i)=>{
-                if(p==='Gluing seams') return `<td><select id="${line}-hlp-p${pi}-${i}"><option value="ok">✅</option><option value="fail">❌</option></select></td>`;
-                return `<td><input type="text" id="${line}-hlp-p${pi}-${i}" style="min-width:55px"></td>`;
-              }).join('')}
-            </tr>`).join('')}
+            <tr>
+              <th style="min-width:130px">Parameter</th>
+              ${times.map(t=>`<th>${t}</th>`).join('')}
+            </tr>
+            <!-- Row 0: Product -->
+            <tr><td class="row-label">Product</td>
+              ${times.map((_,i)=>`
+                <td><select id="${line}-hlp-p0-${i}" style="min-width:120px;font-size:10px" onchange="hlpAutoFill('${line}',${i})">${prodOpts}</select></td>
+              `).join('')}
+            </tr>
+            <!-- Row 1: Qty per Show Box (auto-filled) -->
+            <tr><td class="row-label">Qty per Show Box</td>
+              ${times.map((_,i)=>`<td><input type="number" id="${line}-hlp-p1-${i}" style="min-width:50px;font-weight:700;color:var(--ml1)"></td>`).join('')}
+            </tr>
+            <!-- Row 2: Date on chocolate bar (date picker) -->
+            <tr><td class="row-label">Date on chocolate</td>
+              ${times.map((_,i)=>`<td><input type="date" id="${line}-hlp-p2-${i}" value="${today}" style="min-width:110px;font-size:10px"></td>`).join('')}
+            </tr>
+            <!-- Row 3: Date on Show Box (date picker) -->
+            <tr><td class="row-label">Date on Show Box</td>
+              ${times.map((_,i)=>`<td><input type="date" id="${line}-hlp-p3-${i}" value="${today}" style="min-width:110px;font-size:10px"></td>`).join('')}
+            </tr>
+            <!-- Row 4: Gluing seams -->
+            <tr><td class="row-label">Gluing seams</td>
+              ${times.map((_,i)=>`<td><select id="${line}-hlp-p4-${i}"><option value="ok">✅</option><option value="fail">❌</option></select></td>`).join('')}
+            </tr>
+            <!-- Row 5: Weight of Show Box -->
+            <tr><td class="row-label">Weight of Show Box, g</td>
+              ${times.map((_,i)=>`<td><input type="number" id="${line}-hlp-p5-${i}" style="min-width:55px"></td>`).join('')}
+            </tr>
           </table>
         </div>
         <div class="field" style="margin-top:8px"><label>Comments</label><textarea class="inp" id="${line}-hlp-comments" placeholder="Remarks..."></textarea></div>
       </div>
     </div>
- 
+
     <button class="btn-submit ${bs}" onclick="saveForm('${line}-helper')">✅ Submit ${label} Helper Record</button>
   `;
 }
- 
+
+// Auto-fill qty when product selected in helper
+function hlpAutoFill(line, col) {
+  const sel = document.getElementById(`${line}-hlp-p0-${col}`);
+  if(!sel) return;
+  const opt = sel.options[sel.selectedIndex];
+  const qty = opt ? opt.getAttribute('data-qty') : '';
+  const qtyInput = document.getElementById(`${line}-hlp-p1-${col}`);
+  if(qtyInput && qty) qtyInput.value = qty;
+}
+
 // ===== AVG CALC 20 pcs =====
 function calcAvg20(prefix) {
   const vals = [];
@@ -1502,7 +1622,7 @@ function calcAvg20(prefix) {
 }
 // legacy
 function calcAvg(prefix, row) { calcAvg20(prefix); }
- 
+
 // ===== SIZE MODAL for BabyFox 12/24g =====
 function showSizeChoice(triggerBtn) {
   // deselect other prod buttons
@@ -1530,7 +1650,7 @@ function showSizeChoice(triggerBtn) {
   // store ref to trigger btn
   modal._triggerBtn = triggerBtn;
 }
- 
+
 function selCaotecSize(size) {
   const modal = document.getElementById('size-modal');
   const btn = modal ? modal._triggerBtn : null;
@@ -1545,23 +1665,24 @@ function selCaotecSize(size) {
   curCaotecProd = 'babyfox1224';
   buildCaotecRecipe('babyfox1224', label);
 }
- 
+
 // ===== SAVE =====
 function saveForm(zone) {
   const today = new Date().toISOString().split('T')[0];
   const now = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
- 
+
   let rec = {
     id: Date.now(), zone, date: today, time: now,
     line: zone.startsWith('ml1') ? 'ML-1' : zone.startsWith('ml3') ? 'ML-3' : 'Shared',
     operator: '', product: '', info: '', status: 'ok', notes: ''
   };
- 
+
   if(zone === 'ml1-process-op') {
     rec.date  = document.getElementById('ml1po-date').value || today;
     rec.operator = document.getElementById('ml1po-name').value || '—';
     rec.shift = curShift || '—';
-    rec.product = document.getElementById('ml1-temp-art1').value || '—';
+    const ml1art = document.getElementById('ml1-temp-art1');
+    rec.product = (ml1art?.value || ml1art?.options?.[ml1art.selectedIndex]?.value || '—');
     const fail = ['ml1-temp-s1','ml1-temp-s2'].some(id=>document.getElementById(id).value==='fail') ||
                  ['ml1-q-ts1','ml1-q-ts2','ml1-q-ts3','ml1-q-ap1','ml1-q-ap2','ml1-q-ap3'].some(id=>document.getElementById(id).value==='yes');
     rec.status = fail ? 'fail' : 'ok';
@@ -1570,7 +1691,8 @@ function saveForm(zone) {
   } else if(zone === 'ml3-process-op') {
     rec.date = document.getElementById('ml3po-date').value || today;
     rec.operator = document.getElementById('ml3po-name').value || '—';
-    rec.product = document.getElementById('ml3-temp-art1').value || '—';
+    const ml3art = document.getElementById('ml3-temp-art1');
+    rec.product = (ml3art?.value || ml3art?.options?.[ml3art.selectedIndex]?.value || '—');
     const fail = ['ml3-temp-s1','ml3-temp-s2'].some(id=>document.getElementById(id).value==='fail') ||
                  ['ml3-q-ts1','ml3-q-ts2','ml3-q-ap1','ml3-q-ap2'].some(id=>document.getElementById(id).value==='yes');
     rec.status = fail ? 'fail' : 'ok';
@@ -1613,19 +1735,27 @@ function saveForm(zone) {
     rec.date = document.getElementById('bh-date').value || today;
     rec.operator = document.getElementById('bh-name').value || '—';
     rec.product = curBhProd || '—';
-    rec.info = `Code: ${curBhCode} · Batch: ${document.getElementById('bh-batch').value || '—'}`;
+    const bhBatchNum = document.getElementById('bh-batch').value || '';
+    const bhPfxEl = document.getElementById('bh-batch-prefix');
+    const bhSF = bhPfxEl ? bhPfxEl.textContent.replace('/','').trim() : '';
+    // Format date as DDMMYY
+    const bhDateRaw = document.getElementById('bh-date').value || today;
+    const bhDateParts = bhDateRaw.split('-');
+    const bhDateFmt = bhDateParts.length===3 ? bhDateParts[2]+bhDateParts[1]+bhDateParts[0].slice(2) : '';
+    // Full batch: SF0042/030726/1
+    rec.info = `Batch: ${bhSF}${bhDateFmt?'/'+bhDateFmt:''}${bhBatchNum?'/'+bhBatchNum:''}`;
     rec.notes = document.getElementById('bh-notes').value || '—';
   }
- 
+
   db.unshift(rec); saveDB();
- 
+
   const zoneLabels = {
     'ml1-process-op':'ML-1 Process Operator','ml3-process-op':'ML-3 Process Operator',
     'ml1-machine-op':'ML-1 Machine Operator','ml3-machine-op':'ML-3 Machine Operator',
     'ml1-helper':'ML-1 Helper','ml3-helper':'ML-3 Helper',
     'metal-detector':'Metal Detector','caotec':'CAOTEC','buhler':'Bühler'
   };
- 
+
   document.getElementById('success-detail').innerHTML = `
     <div class="success-row"><span class="sr-label">Zone</span><span class="sr-val">${zoneLabels[zone]||zone}</span></div>
     <div class="success-row"><span class="sr-label">Date</span><span class="sr-val">${rec.date} · ${rec.time}</span></div>
@@ -1636,7 +1766,7 @@ function saveForm(zone) {
   `;
   go('success');
 }
- 
+
 // ===== DASHBOARD =====
 function renderStats() {
   const today = new Date().toISOString().split('T')[0];
@@ -1652,32 +1782,32 @@ function renderStats() {
     <div class="stat-box" style="border-top-color:var(--gold1)"><div class="stat-num" style="color:var(--gold1)">${todayR.length}</div><div class="stat-lbl">Today</div></div>
   `;
 }
- 
+
 function switchLogTab(tab, btn) {
   curLogTab = tab;
   document.querySelectorAll('.tab-btn2').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderLog();
 }
- 
+
 function renderLog() {
   const fZone = document.getElementById('f-zone').value;
   const fDate = document.getElementById('f-date').value;
- 
+
   let data = db;
   if(curLogTab==='ml1') data = data.filter(r=>r.line==='ML-1');
   else if(curLogTab==='ml3') data = data.filter(r=>r.line==='ML-3');
   else if(curLogTab==='shared') data = data.filter(r=>r.line==='Shared');
   if(fZone) data = data.filter(r=>r.zone===fZone);
   if(fDate) data = data.filter(r=>r.date===fDate);
- 
+
   const zoneLabels = {
     'ml1-process-op':'Process Op.','ml3-process-op':'Process Op.',
     'ml1-machine-op':'Machine Op.','ml3-machine-op':'Machine Op.',
     'ml1-helper':'Helper','ml3-helper':'Helper',
     'metal-detector':'Metal Det.','caotec':'CAOTEC','buhler':'Bühler'
   };
- 
+
   const tbody = document.getElementById('log-body');
   if(!data.length){
     tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><div class="ei">📋</div><p>No records found</p></div></td></tr>`;
@@ -1698,7 +1828,7 @@ function renderLog() {
     </tr>`;
   }).join('');
 }
- 
+
 function exportCSV() {
   if(!db.length){alert('No records');return;}
   const h=['Date','Time','Zone','Line','Operator','Product','Info','Status','Notes'];
@@ -1709,32 +1839,32 @@ function exportCSV() {
   a.download=`production_log_${new Date().toISOString().split('T')[0]}.csv`;
   a.click();
 }
- 
+
 function clearLog() {
   if(!confirm('Delete all records? This cannot be undone.')) return;
   db=[]; saveDB(); renderStats(); renderLog();
 }
- 
+
 // ===== QR CODES =====
 const QR_ZONES = {
   ml1: [
     {screen:'ml1-process-op', name:'Process Operator', sub:'Tempering · Weighing · Quality', icon:'👷', cls:'qc-ml1'},
     {screen:'ml1-machine-op', name:'Machine Operator', sub:'Packaging · Film batch · Pallets', icon:'⚙️', cls:'qc-ml1'},
-    {screen:'ml1-helper',     name:'Helper (Ukladchik)', sub:'Show Box · Weight · Date', icon:'📦', cls:'qc-ml1'},
+    {screen:'ml1-helper',     name:'Helper', sub:'Show Box · Weight · Date · Gluing', icon:'📦', cls:'qc-ml1'},
     {screen:'metal-detector', name:'Metal Detector', sub:'CCP · 4× per shift', icon:'🔍', cls:'qc-ml1'},
   ],
   ml3: [
     {screen:'ml3-process-op', name:'Process Operator', sub:'Tempering · Weighing · Quality', icon:'👷', cls:'qc-ml3'},
     {screen:'ml3-machine-op', name:'Machine Operator', sub:'Packaging · Film batch · Pallets', icon:'⚙️', cls:'qc-ml3'},
-    {screen:'ml3-helper',     name:'Helper (Ukladchik)', sub:'Show Box · Weight · Date', icon:'📦', cls:'qc-ml3'},
+    {screen:'ml3-helper',     name:'Helper', sub:'Show Box · Weight · Date · Gluing', icon:'📦', cls:'qc-ml3'},
     {screen:'metal-detector', name:'Metal Detector', sub:'CCP · 4× per shift', icon:'🔍', cls:'qc-ml3'},
   ],
   shared: [
     {screen:'caotec', name:'CAOTEC Operator', sub:'Filling loading · Batch numbers', icon:'🧪', cls:'qc-gold'},
-    {screen:'buhler', name:'Bühler Operator', sub:'Product · Batch № · Date', icon:'🔩', cls:'qc-shared'},
+    {screen:'buhler', name:'Bühler', sub:'Product · Batch № · Date', icon:'🔩', cls:'qc-shared'},
   ]
 };
- 
+
 function makeQR(elId, url, size=150) {
   const el = document.getElementById(elId);
   if(!el) return;
@@ -1742,7 +1872,7 @@ function makeQR(elId, url, size=150) {
   try { new QRCode(el,{text:url,width:size,height:size,correctLevel:QRCode.CorrectLevel.M}); }
   catch(e){ el.innerHTML=`<p style="font-size:10px;color:#aaa;padding:8px;word-break:break-all">${url}</p>`; }
 }
- 
+
 function renderQRs() {
   const base = window.location.href.split('?')[0];
   ['ml1','ml3','shared'].forEach(group=>{
@@ -1760,7 +1890,7 @@ function renderQRs() {
     QR_ZONES[group].forEach((z,i)=>makeQR(`qr-${group}-${i}`, `${base}?screen=${z.screen}`, 150));
   });
 }
- 
+
 // ===== DEEP LINK =====
 (function(){
   const p = new URLSearchParams(window.location.search);
@@ -1770,27 +1900,3 @@ function renderQRs() {
 </script>
 </body>
 </html>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
