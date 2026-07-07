@@ -1056,7 +1056,7 @@ textarea.inp{min-height:64px;resize:vertical}
 <div id="dashboard" class="screen">
   <div class="app-header">
     <button class="btn-back" onclick="go('home')">‹</button>
-    <div class="hdr-info"><h2>Production Journal</h2><p>All records</p></div>
+    <div class="hdr-info" onclick="adminTapCount()"><h2>Production Journal</h2><p>All records</p></div>
     <span class="hdr-line-badge hdr-shared">LOG</span>
   </div>
   <div class="dash-content">
@@ -1088,7 +1088,7 @@ textarea.inp{min-height:64px;resize:vertical}
           </select>
           <input type="date" id="f-date" onchange="renderLog()">
           <button class="btn-action btn-export" onclick="exportCSV()">📥 CSV</button>
-          <button class="btn-action btn-clear" onclick="clearLog()">🗑️ Clear</button>
+          <button class="btn-action btn-clear" id="btn-admin-clear" onclick="clearLog()" style="display:none">🗑️ Clear</button>
         </div>
       </div>
     </div>
@@ -1922,7 +1922,39 @@ function exportCSV() {
   a.click();
 }
 
+// ===== ADMIN ACCESS CONTROL =====
+// Only the person who knows the PIN can reveal Clear controls or wipe the journal.
+// Change ADMIN_PIN below to whatever code you want to keep private.
+const ADMIN_PIN = '2026';
+let adminTaps = 0;
+let adminTapTimer = null;
+
+function adminTapCount() {
+  adminTaps++;
+  clearTimeout(adminTapTimer);
+  adminTapTimer = setTimeout(() => { adminTaps = 0; }, 1500);
+  if(adminTaps >= 5) {
+    adminTaps = 0;
+    promptAdminPin();
+  }
+}
+
+function promptAdminPin() {
+  const entered = prompt('Enter admin PIN to unlock Clear controls:');
+  if(entered === null) return;
+  if(entered === ADMIN_PIN) {
+    const btn = document.getElementById('btn-admin-clear');
+    if(btn) btn.style.display = '';
+    alert('✅ Admin controls unlocked for this session.');
+  } else {
+    alert('❌ Incorrect PIN.');
+  }
+}
+
 function clearLog() {
+  const entered = prompt('Enter admin PIN to confirm deleting ALL records:');
+  if(entered === null) return;
+  if(entered !== ADMIN_PIN) { alert('❌ Incorrect PIN. Deletion cancelled.'); return; }
   if(!confirm('Delete all records? This cannot be undone.')) return;
   db=[]; saveDB(); renderStats(); renderLog();
 }
