@@ -473,7 +473,7 @@ textarea.inp{min-height:64px;resize:vertical}
 
     <button class="dash-btn" onclick="go('dashboard')">📊 Production Journal</button>
     <button class="dash-btn" style="border-color:rgba(30,122,74,.4);color:#4ADE80;background:rgba(30,122,74,.15)" onclick="go('traceability')">🧾 Raw Material Traceability</button>
-    <button class="dash-btn" style="border-color:rgba(91,42,14,.4);color:var(--gold3);background:rgba(91,42,14,.2)" onclick="go('qrpage')">📱 Print QR Codes</button>
+    <button class="dash-btn" style="border-color:rgba(91,42,14,.4);color:var(--gold3);background:rgba(91,42,14,.2)" onclick="goQRPageProtected()">📱 Print QR Codes</button>
   </div>
 </div>
 
@@ -1086,7 +1086,11 @@ textarea.inp{min-height:64px;resize:vertical}
             <option value="caotec">CAOTEC</option>
             <option value="buhler">Bühler</option>
           </select>
-          <input type="date" id="f-date" onchange="renderLog()">
+          <input type="date" id="f-date-from" onchange="renderStats(); renderLog();" title="From date">
+          <span style="color:var(--muted);font-size:12px;align-self:center">to</span>
+          <input type="date" id="f-date-to" onchange="renderStats(); renderLog();" title="To date">
+          <button class="btn-action btn-export" style="background:var(--cream2);color:var(--brown2);border:1.5px solid var(--border)" onclick="clearDateRange()">✖ Clear dates</button>
+          <button class="btn-action btn-export" onclick="manualRefresh()">🔄 Refresh</button>
           <button class="btn-action btn-export" onclick="exportCSV()">📥 CSV</button>
           <button class="btn-action btn-clear" id="btn-admin-clear" onclick="clearLog()" style="display:none">🗑️ Clear</button>
         </div>
@@ -1157,6 +1161,13 @@ textarea.inp{min-height:64px;resize:vertical}
     <div class="card"><div class="card-head ch-brown">🏭 Shared Zones</div>
       <div class="qr-grid" style="padding:14px" id="qr-shared-grid"></div></div>
 
+    <div class="card"><div class="card-head" style="background:linear-gradient(90deg,#4E1F57,#763081);color:#fff">👑 Owner Access — Keep Private</div>
+      <div class="qr-grid" style="padding:14px" id="qr-admin-grid"></div>
+      <div class="card-body" style="padding-top:0">
+        <p style="font-size:12px;color:var(--muted)">⚠️ Do not print or share these two QR codes with staff — they open the full Journal and Traceability data directly. Save these images to your own phone instead.</p>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head ch-gold">📌 Placement guide</div>
       <div class="card-body" style="font-size:13.5px;line-height:1.7;color:var(--brown2)">
@@ -1197,10 +1208,11 @@ async function sendToSheets(record) {
   }
 }
 
-async function loadFromSheets() {
+async function loadFromSheets(showAlert) {
   if(!SHEETS_URL || SHEETS_URL.includes('PASTE')) return;
   try {
     const res = await fetch(SHEETS_URL + '?action=get', {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     if(Array.isArray(data) && data.length > 0) {
       // Merge: keep local + remote, deduplicate by id
@@ -1221,11 +1233,26 @@ async function loadFromSheets() {
       const newRemote = remote.filter(r => !localIds.has(String(r.id)));
       db = [...db, ...newRemote].sort((a,b) => b.id - a.id);
       localStorage.setItem('choco_db', JSON.stringify(db));
-      console.log('✅ Loaded from Sheets:', remote.length, 'records');
+      console.log('✅ Loaded from Sheets:', remote.length, 'records,', newRemote.length, 'new');
+      if(showAlert) alert(`✅ Synced. ${remote.length} records in Sheets, ${newRemote.length} new added.`);
+    } else if(showAlert) {
+      alert('⚠️ Sheets returned no data. Check that the Apps Script doGet function is deployed correctly.');
     }
   } catch(e) {
     console.warn('⚠️ Sheets load error:', e);
+    if(showAlert) alert('❌ Could not load from Sheets: ' + e.message + '\n\nThis usually means the Google Apps Script needs to be redeployed as a new version with "Anyone" access.');
   }
+}
+
+function manualRefresh() {
+  loadFromSheets(true).then(() => { renderStats(); renderLog(); });
+}
+
+function clearDateRange() {
+  document.getElementById('f-date-from').value = '';
+  document.getElementById('f-date-to').value = '';
+  renderStats();
+  renderLog();
 }
 
 function saveDB() {
@@ -1587,7 +1614,7 @@ function buildHelper(line) {
       <div class="card-head ${col}">📋 Shift Info — ${label} Helper</div>
       <div class="card-body">
         <div class="inp-row">
-          <div class="field" style="flex:1"><label>Date</label><input class="inp" type="date" id="${line}-hlp-date" value="${today}"></div>
+          <div class="field" style="flex:1"><label>Date</label><input class="inp" type="date" id="${line}-hlp-date" value="${today}" onchange="hlpSyncDates('${line}')"></div>
           <div class="field" style="flex:1"><label>Shift №</label><select class="inp" id="${line}-hlp-shift"><option>1 (Day)</option><option>2 (Night)</option></select></div>
         </div>
         <div class="field"><label>Supervisor name</label><input class="inp" type="text" id="${line}-hlp-sup" placeholder="Full name"></div>
@@ -1648,6 +1675,20 @@ function hlpAutoFill(line, col) {
   const qty = opt ? opt.getAttribute('data-qty') : '';
   const qtyInput = document.getElementById(`${line}-hlp-p1-${col}`);
   if(qtyInput && qty) qtyInput.value = qty;
+}
+
+// When the shift Date field changes, push that date into every
+// "Date on chocolate" and "Date on Show Box" column for this line.
+// This keeps traceability correct if the shift is logged for a past date.
+function hlpSyncDates(line) {
+  const dateVal = document.getElementById(`${line}-hlp-date`)?.value;
+  if(!dateVal) return;
+  for(let i=0;i<13;i++){
+    const chocDate = document.getElementById(`${line}-hlp-p2-${i}`);
+    const boxDate = document.getElementById(`${line}-hlp-p3-${i}`);
+    if(chocDate) chocDate.value = dateVal;
+    if(boxDate) boxDate.value = dateVal;
+  }
 }
 
 // ===== AVG CALC 20 pcs =====
@@ -1852,16 +1893,29 @@ function saveForm(zone) {
 // ===== DASHBOARD =====
 function renderStats() {
   const today = new Date().toISOString().split('T')[0];
-  const ml1 = db.filter(r=>r.line==='ML-1');
-  const ml3 = db.filter(r=>r.line==='ML-3');
-  const fails = db.filter(r=>r.status==='fail');
+  const fDateFrom = document.getElementById('f-date-from')?.value || '';
+  const fDateTo = document.getElementById('f-date-to')?.value || '';
+  const hasRange = fDateFrom || fDateTo;
+
+  let scoped = db;
+  if(fDateFrom) scoped = scoped.filter(r=>r.date >= fDateFrom);
+  if(fDateTo) scoped = scoped.filter(r=>r.date <= fDateTo);
+
+  const ml1 = scoped.filter(r=>r.line==='ML-1');
+  const ml3 = scoped.filter(r=>r.line==='ML-3');
+  const fails = scoped.filter(r=>r.status==='fail');
   const todayR = db.filter(r=>r.date===today);
+
+  const lastLabel = hasRange
+    ? `In range: ${scoped.length}`
+    : `Today: ${todayR.length}`;
+
   document.getElementById('dash-stats').innerHTML = `
-    <div class="stat-box"><div class="stat-num">${db.length}</div><div class="stat-lbl">Total Records</div></div>
+    <div class="stat-box"><div class="stat-num">${hasRange ? scoped.length : db.length}</div><div class="stat-lbl">${hasRange ? 'Records In Range' : 'Total Records'}</div></div>
     <div class="stat-box" style="border-top-color:var(--ml1)"><div class="stat-num" style="color:var(--ml1)">${ml1.length}</div><div class="stat-lbl">ML-1 Records</div></div>
     <div class="stat-box" style="border-top-color:var(--ml3)"><div class="stat-num" style="color:var(--ml3)">${ml3.length}</div><div class="stat-lbl">ML-3 Records</div></div>
     <div class="stat-box" style="border-top-color:var(--red)"><div class="stat-num" style="color:var(--red)">${fails.length}</div><div class="stat-lbl">Deviations</div></div>
-    <div class="stat-box" style="border-top-color:var(--gold1)"><div class="stat-num" style="color:var(--gold1)">${todayR.length}</div><div class="stat-lbl">Today</div></div>
+    <div class="stat-box" style="border-top-color:var(--gold1)"><div class="stat-num" style="color:var(--gold1)">${hasRange ? scoped.filter(r=>r.date===today).length : todayR.length}</div><div class="stat-lbl">Today</div></div>
   `;
 }
 
@@ -1874,14 +1928,16 @@ function switchLogTab(tab, btn) {
 
 function renderLog() {
   const fZone = document.getElementById('f-zone').value;
-  const fDate = document.getElementById('f-date').value;
+  const fDateFrom = document.getElementById('f-date-from').value;
+  const fDateTo = document.getElementById('f-date-to').value;
 
   let data = db;
   if(curLogTab==='ml1') data = data.filter(r=>r.line==='ML-1');
   else if(curLogTab==='ml3') data = data.filter(r=>r.line==='ML-3');
   else if(curLogTab==='shared') data = data.filter(r=>r.line==='Shared');
   if(fZone) data = data.filter(r=>r.zone===fZone);
-  if(fDate) data = data.filter(r=>r.date===fDate);
+  if(fDateFrom) data = data.filter(r=>r.date >= fDateFrom);
+  if(fDateTo) data = data.filter(r=>r.date <= fDateTo);
 
   const zoneLabels = {
     'ml1-process-op':'Process Op.','ml3-process-op':'Process Op.',
@@ -2187,6 +2243,10 @@ const QR_ZONES = {
   shared: [
     {screen:'caotec', name:'CAOTEC Operator', sub:'Filling loading · Batch numbers', icon:'🧪', cls:'qc-gold'},
     {screen:'buhler', name:'Bühler', sub:'Product · Batch № · Date', icon:'🔩', cls:'qc-shared'},
+  ],
+  admin: [
+    {screen:'dashboard', name:'Production Journal', sub:'Owner only — all statistics & records', icon:'📊', cls:'qc-shared'},
+    {screen:'traceability', name:'Raw Material Traceability', sub:'Owner only — batch tracking sheet', icon:'🧾', cls:'qc-shared'},
   ]
 };
 
@@ -2200,7 +2260,7 @@ function makeQR(elId, url, size=150) {
 
 function renderQRs() {
   const base = window.location.href.split('?')[0];
-  ['ml1','ml3','shared'].forEach(group=>{
+  ['ml1','ml3','shared','admin'].forEach(group=>{
     const grid = document.getElementById(`qr-${group}-grid`);
     if(!grid) return;
     grid.innerHTML = QR_ZONES[group].map((z,i)=>`
@@ -2216,11 +2276,25 @@ function renderQRs() {
   });
 }
 
+// ===== QR PAGE ACCESS CONTROL =====
+// Uses the same ADMIN_PIN as journal clearing, so staff never see or print QR codes without the owner's code.
+function goQRPageProtected() {
+  const entered = prompt('Enter admin PIN to open QR Codes:');
+  if(entered === null) return;
+  if(entered !== ADMIN_PIN) { alert('❌ Incorrect PIN.'); return; }
+  go('qrpage');
+}
+
 // ===== DEEP LINK =====
 (function(){
   const p = new URLSearchParams(window.location.search);
   const screen = p.get('screen');
-  if(screen) setTimeout(()=>go(screen), 100);
+  if(screen === 'qrpage') {
+    // Even a saved/shared link to the QR page must pass the PIN check.
+    setTimeout(()=>goQRPageProtected(), 100);
+  } else if(screen) {
+    setTimeout(()=>go(screen), 100);
+  }
 })();
 </script>
 </body>
