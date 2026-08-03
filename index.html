@@ -1198,11 +1198,14 @@ let db = JSON.parse(localStorage.getItem('choco_db') || '[]');
 async function sendToSheets(record) {
   if(!SHEETS_URL || SHEETS_URL.includes('PASTE')) return;
   try {
+    // Sheets stores flat text columns, so serialize the nested `raw` object
+    // (used for Traceability) into a JSON string in its own column.
+    const payload = { ...record, raw: record.raw ? JSON.stringify(record.raw) : '' };
     await fetch(SHEETS_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(record)
+      body: JSON.stringify(payload)
     });
     console.log('✅ Sent to Sheets:', record.zone);
   } catch(e) {
@@ -1243,6 +1246,11 @@ async function loadFromSheets(showAlert) {
       };
       const remote = data.map((r, idx) => {
         const rawId = pick(r, 'id', 'столбец 1', 'column 1');
+        const rawStr = pick(r, 'raw');
+        let rawObj = null;
+        if(rawStr){
+          try { rawObj = JSON.parse(rawStr); } catch(e) { rawObj = null; }
+        }
         return {
           id: rawId || (Date.now() + idx),
           date: normalizeDate(pick(r, 'date')),
@@ -1254,7 +1262,8 @@ async function loadFromSheets(showAlert) {
           info: pick(r, 'info'),
           status: pick(r, 'status') || 'ok',
           notes: pick(r, 'notes'),
-          shift: pick(r, 'shift')
+          shift: pick(r, 'shift'),
+          raw: rawObj
         };
       });
       const localIds = new Set(db.map(r => String(r.id)));
