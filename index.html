@@ -1218,22 +1218,48 @@ async function loadFromSheets(showAlert) {
     const data = await res.json();
     if(Array.isArray(data) && data.length > 0) {
       // Merge: keep local + remote, deduplicate by id
-      const remote = data.map(r => ({
-        id: r.ID || r.id || Date.now(),
-        date: r.Date || r.date || '',
-        time: r.Time || r.time || '',
-        zone: r.Zone || r.zone || '',
-        line: r.Line || r.line || '',
-        operator: r.Operator || r.operator || '',
-        product: r.Product || r.product || '',
-        info: r.Info || r.info || '',
-        status: r.Status || r.status || 'ok',
-        notes: r.Notes || r.notes || '',
-        shift: r.Shift || r.shift || ''
-      }));
+      // Build a case-insensitive lookup for each row so column header
+      // capitalization/spelling in the Sheet (DATE vs Date vs date) never breaks parsing.
+      const pick = (row, ...names) => {
+        const keys = Object.keys(row);
+        for(const name of names){
+          const found = keys.find(k => k.toLowerCase().replace(/\s+/g,'') === name.toLowerCase().replace(/\s+/g,''));
+          if(found && row[found] !== '' && row[found] != null) return row[found];
+        }
+        return '';
+      };
+      // Google Sheets often serializes date cells as full ISO datetimes
+      // (e.g. "2026-07-24T20:00:00.000Z") instead of plain "2026-07-24".
+      // Normalize down to YYYY-MM-DD so date filters and traceability match correctly.
+      const normalizeDate = (val) => {
+        if(!val) return '';
+        const s = String(val);
+        const isoMatch = s.match(/^(\d{4}-\d{2}-\d{2})/);
+        if(isoMatch) return isoMatch[1];
+        // Try parsing other formats as a fallback
+        const d = new Date(s);
+        if(!isNaN(d.getTime())) return d.toISOString().split('T')[0];
+        return s;
+      };
+      const remote = data.map((r, idx) => {
+        const rawId = pick(r, 'id', 'столбец 1', 'column 1');
+        return {
+          id: rawId || (Date.now() + idx),
+          date: normalizeDate(pick(r, 'date')),
+          time: pick(r, 'time'),
+          zone: pick(r, 'zone'),
+          line: pick(r, 'line'),
+          operator: pick(r, 'operator'),
+          product: pick(r, 'product'),
+          info: pick(r, 'info'),
+          status: pick(r, 'status') || 'ok',
+          notes: pick(r, 'notes'),
+          shift: pick(r, 'shift')
+        };
+      });
       const localIds = new Set(db.map(r => String(r.id)));
       const newRemote = remote.filter(r => !localIds.has(String(r.id)));
-      db = [...db, ...newRemote].sort((a,b) => b.id - a.id);
+      db = [...db, ...newRemote].sort((a,b) => String(b.id).localeCompare(String(a.id)));
       localStorage.setItem('choco_db', JSON.stringify(db));
       console.log('✅ Loaded from Sheets:', remote.length, 'records,', newRemote.length, 'new');
       // Render immediately, BEFORE showing any blocking alert, so the screen
