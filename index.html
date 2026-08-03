@@ -1126,12 +1126,14 @@ textarea.inp{min-height:64px;resize:vertical}
         <div class="filter-bar">
           <label style="font-size:12px;font-weight:700;color:var(--muted)">Date:</label>
           <input type="date" id="tr-date" onchange="renderTraceability()">
+          <button class="btn-action btn-export" style="background:var(--cream2);color:var(--brown2);border:1.5px solid var(--border)" id="tr-all-dates-btn" onclick="toggleTraceAllDates()">📅 Show All Dates</button>
+          <button class="btn-action btn-export" onclick="loadFromSheets(true).then(()=>renderTraceability())">🔄 Refresh</button>
           <button class="btn-action btn-export" onclick="exportTraceabilityCSV()">📥 Export CSV</button>
         </div>
       </div>
     </div>
     <div class="info-box warn">
-      📌 Built automatically from Machine Operator, CAOTEC and Bühler records saved for the selected date. Only products actually used that day appear with batch numbers — unused columns stay blank. Kunafa & Flavouring batch numbers come from ML-1 Process Operator.
+      📌 Built automatically from Machine Operator, CAOTEC and Bühler records. Only products actually used appear with batch numbers — unused columns stay blank. Kunafa & Flavouring batch numbers come from ML-1 Process Operator. Use "Show All Dates" to see everything at once instead of one day at a time.
     </div>
     <div class="log-wrap" id="trace-wrap">
       <table class="log-table" id="trace-table">
@@ -1234,6 +1236,9 @@ async function loadFromSheets(showAlert) {
       db = [...db, ...newRemote].sort((a,b) => b.id - a.id);
       localStorage.setItem('choco_db', JSON.stringify(db));
       console.log('✅ Loaded from Sheets:', remote.length, 'records,', newRemote.length, 'new');
+      // Render immediately, BEFORE showing any blocking alert, so the screen
+      // is already correct underneath the dialog.
+      renderStats(); renderLog();
       if(showAlert) alert(`✅ Synced. ${remote.length} records in Sheets, ${newRemote.length} new added.`);
     } else if(showAlert) {
       alert('⚠️ Sheets returned no data. Check that the Apps Script doGet function is deployed correctly.');
@@ -1245,7 +1250,15 @@ async function loadFromSheets(showAlert) {
 }
 
 function manualRefresh() {
+  clearDateRangeSilent();
   loadFromSheets(true).then(() => { renderStats(); renderLog(); });
+}
+
+function clearDateRangeSilent() {
+  const f1 = document.getElementById('f-date-from');
+  const f2 = document.getElementById('f-date-to');
+  if(f1) f1.value = '';
+  if(f2) f2.value = '';
 }
 
 function clearDateRange() {
@@ -2097,7 +2110,8 @@ function buhlerColsForCode(code){
 }
 
 function buildTraceabilityData(dateStr){
-  const dayRecords = db.filter(r=>r.date===dateStr);
+  // dateStr === null means "all dates" — use the entire journal instead of one day.
+  const dayRecords = dateStr === null ? db : db.filter(r=>r.date===dateStr);
   // cell[rowLabel][productCode] = value (string, joined if multiple)
   const cell = {};
   const setCell = (row, col, val) => {
@@ -2109,8 +2123,8 @@ function buildTraceabilityData(dateStr){
   let totalPallets = 0;
   const usedProductCols = new Set();
 
-  // ---- Step 1: find which product columns were ACTUALLY produced on this date ----
-  // Only Machine Operator + CAOTEC records define "was this product made today".
+  // ---- Step 1: find which product columns were ACTUALLY produced ----
+  // Only Machine Operator + CAOTEC records define "was this product made".
   dayRecords.forEach(r=>{
     if(!r.raw) return;
     if(r.raw.type === 'packaging'){
@@ -2150,14 +2164,14 @@ function buildTraceabilityData(dateStr){
   // ---- Step 2: Bühler batches — "latest known batch on or before this date" ----
   // A Bühler batch stays valid until a newer batch of the same semi-finished
   // product is recorded, regardless of which date it was originally entered.
+  // In "all dates" mode, simply use the single latest batch on record.
   ['PP7','DCH3','DCH4','WHITE'].forEach(code=>{
     const cols = buhlerColsForCode(code);
     const relevantCols = cols.filter(c=>usedProductCols.has(c));
-    if(!relevantCols.length) return; // nothing produced today that needs this semi-finished product
+    if(!relevantCols.length) return;
 
-    // Find the most recent Bühler record with this code, dated on or before dateStr
     const candidates = db.filter(r =>
-      r.raw && r.raw.type==='buhler' && r.raw.code===code && r.date <= dateStr
+      r.raw && r.raw.type==='buhler' && r.raw.code===code && (dateStr === null || r.date <= dateStr)
     ).sort((a,b) => b.date.localeCompare(a.date) || b.id - a.id);
 
     if(!candidates.length) return;
@@ -2170,17 +2184,40 @@ function buildTraceabilityData(dateStr){
   return { cell, usedProductCols, totalPallets };
 }
 
+let traceShowAllDates = false;
+
+function toggleTraceAllDates(){
+  traceShowAllDates = !traceShowAllDates;
+  const btn = document.getElementById('tr-all-dates-btn');
+  const dateInput = document.getElementById('tr-date');
+  if(traceShowAllDates){
+    btn.textContent = '📅 Showing All Dates ✓';
+    btn.style.background = 'var(--brown2)';
+    btn.style.color = '#fff';
+    dateInput.disabled = true;
+    dateInput.style.opacity = '0.5';
+  } else {
+    btn.textContent = '📅 Show All Dates';
+    btn.style.background = 'var(--cream2)';
+    btn.style.color = 'var(--brown2)';
+    dateInput.disabled = false;
+    dateInput.style.opacity = '1';
+  }
+  renderTraceability();
+}
+
 function renderTraceability(){
   const dateInput = document.getElementById('tr-date');
   if(!dateInput.value) dateInput.value = new Date().toISOString().split('T')[0];
-  const dateStr = dateInput.value;
+  const dateStr = traceShowAllDates ? null : dateInput.value;
   const { cell, usedProductCols, totalPallets } = buildTraceabilityData(dateStr);
 
   const cols = TRACE_PRODUCT_COLS.filter(c=>usedProductCols.has(c));
   const tbody = document.getElementById('trace-body');
 
   if(!cols.length){
-    tbody.innerHTML = `<tr><td><div class="empty-state"><div class="ei">🧾</div><p>No products recorded as used on ${dateStr}.<br>Submit Machine Operator, CAOTEC or Bühler forms first.</p></div></td></tr>`;
+    const label = traceShowAllDates ? 'in the journal' : `on ${dateStr}`;
+    tbody.innerHTML = `<tr><td><div class="empty-state"><div class="ei">🧾</div><p>No products recorded as used ${label}.<br>Submit Machine Operator, CAOTEC or Bühler forms first, or tap Refresh to sync from Sheets.</p></div></td></tr>`;
     return;
   }
 
@@ -2190,8 +2227,6 @@ function renderTraceability(){
     html += `<tr><td colspan="${cols.length+1}" style="background:var(--warnl);font-weight:800;color:var(--brown2);font-size:11px;text-transform:uppercase">${group.section}</td></tr>`;
     group.rows.forEach(rowLabel=>{
       const rowData = cell[rowLabel];
-      // Skip fully empty rows to keep the sheet clean (mirrors "unused = blank" requirement)
-      const hasAny = rowData && cols.some(c=>rowData[c]);
       html += `<tr><td class="row-label" style="position:sticky;left:0;background:var(--cream0);font-weight:600">${rowLabel}</td>${
         cols.map(c=>`<td>${(rowData && rowData[c]) ? rowData[c] : ''}</td>`).join('')
       }</tr>`;
@@ -2204,10 +2239,11 @@ function renderTraceability(){
 }
 
 function exportTraceabilityCSV(){
-  const dateStr = document.getElementById('tr-date').value || new Date().toISOString().split('T')[0];
+  const dateInput = document.getElementById('tr-date');
+  const dateStr = traceShowAllDates ? null : (dateInput.value || new Date().toISOString().split('T')[0]);
   const { cell, usedProductCols, totalPallets } = buildTraceabilityData(dateStr);
   const cols = TRACE_PRODUCT_COLS.filter(c=>usedProductCols.has(c));
-  if(!cols.length){ alert('No data for this date'); return; }
+  if(!cols.length){ alert('No data to export'); return; }
 
   const rows = [['Raw material / Product', ...cols.map(c=>TRACE_PRODUCT_LABELS[c]||c)]];
   TRACE_ROW_GROUPS.forEach(group=>{
@@ -2222,7 +2258,7 @@ function exportTraceabilityCSV(){
   const csv = rows.map(r=>r.map(c=>`"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'}));
-  a.download=`traceability_${dateStr}.csv`;
+  a.download=`traceability_${dateStr || 'all-dates'}.csv`;
   a.click();
 }
 
