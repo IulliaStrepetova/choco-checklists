@@ -1249,7 +1249,12 @@ async function loadFromSheets(showAlert) {
         const rawStr = pick(r, 'raw');
         let rawObj = null;
         if(rawStr){
-          try { rawObj = JSON.parse(rawStr); } catch(e) { rawObj = null; }
+          try {
+            rawObj = JSON.parse(rawStr);
+          } catch(e) {
+            console.warn('⚠️ Could not parse Raw field for record', rawId, '— raw text was:', rawStr, '— error:', e.message);
+            rawObj = null;
+          }
         }
         return {
           id: rawId || (Date.now() + idx),
@@ -1266,15 +1271,22 @@ async function loadFromSheets(showAlert) {
           raw: rawObj
         };
       });
+      // Merge strategy: for each remote record, if we already have it locally,
+      // REPLACE it with the remote version (Sheets is the source of truth once synced —
+      // this ensures fields added later, like `raw` for Traceability, actually update
+      // records that were already cached locally with an empty raw value).
+      // Any local-only record not yet in Sheets (e.g. submitted seconds ago) is kept as-is.
+      const remoteById = new Map(remote.map(r => [String(r.id), r]));
+      const merged = db.map(localRec => remoteById.get(String(localRec.id)) || localRec);
       const localIds = new Set(db.map(r => String(r.id)));
-      const newRemote = remote.filter(r => !localIds.has(String(r.id)));
-      db = [...db, ...newRemote].sort((a,b) => String(b.id).localeCompare(String(a.id)));
+      const brandNew = remote.filter(r => !localIds.has(String(r.id)));
+      db = [...brandNew, ...merged].sort((a,b) => String(b.id).localeCompare(String(a.id)));
       localStorage.setItem('choco_db', JSON.stringify(db));
-      console.log('✅ Loaded from Sheets:', remote.length, 'records,', newRemote.length, 'new');
+      console.log('✅ Loaded from Sheets:', remote.length, 'records,', brandNew.length, 'new,', merged.length - brandNew.length, 'updated');
       // Render immediately, BEFORE showing any blocking alert, so the screen
       // is already correct underneath the dialog.
       renderStats(); renderLog();
-      if(showAlert) alert(`✅ Synced. ${remote.length} records in Sheets, ${newRemote.length} new added.`);
+      if(showAlert) alert(`✅ Synced. ${remote.length} records in Sheets, ${brandNew.length} new added.`);
     } else if(showAlert) {
       alert('⚠️ Sheets returned no data. Check that the Apps Script doGet function is deployed correctly.');
     }
