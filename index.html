@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Production Chocolate Product — QR Checklist System</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qr-code-styling/1.6.0-rc.1/qr-code-styling.js"></script>
+<script src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
 <style>
 /* ============ TOKENS ============ */
 :root {
@@ -2665,6 +2665,12 @@ function makeQR(elId, url, size=150) {
   const el = document.getElementById(elId);
   if(!el) return;
   el.innerHTML = '';
+  if(typeof QRCodeStyling === 'undefined'){
+    // Styling library failed to load (offline, CDN blocked, etc.) — fall
+    // back to a plain black-and-white QR so the code is still usable.
+    el.innerHTML = `<p style="font-size:10px;color:#C0392B;padding:8px;text-align:center">⚠️ QR styling library unavailable.<br>Link: ${url}</p>`;
+    return;
+  }
   try {
     const qr = new QRCodeStyling({
       width: size,
@@ -2682,6 +2688,7 @@ function makeQR(elId, url, size=150) {
     });
     qr.append(el);
   } catch(e) {
+    console.warn('QR generation failed:', e);
     el.innerHTML=`<p style="font-size:10px;color:#aaa;padding:8px;word-break:break-all">${url}</p>`;
   }
 }
