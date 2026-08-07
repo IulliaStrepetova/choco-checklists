@@ -2680,7 +2680,7 @@ function makeQR(elId, url, size=150) {
       image: QR_LOGO_URL,
       margin: 4,
       qrOptions: { errorCorrectionLevel: 'H' },
-      imageOptions: { crossOrigin: 'anonymous', margin: 4, imageSize: 0.32 },
+      imageOptions: { crossOrigin: 'anonymous', margin: 6, imageSize: 0.18, hideBackgroundDots: true },
       dotsOptions: { type: 'dots', color: '#763081' },
       cornersSquareOptions: { type: 'extra-rounded', color: '#2E1233' },
       cornersDotOptions: { type: 'dot', color: '#2E1233' },
@@ -2706,6 +2706,7 @@ function renderQRs() {
           <div class="qr-checklist-strip">Check List</div>
           <div class="qr-name">${z.name}</div>
           <div class="qr-sub">${z.sub}</div>
+          <div style="font-size:9px;color:#bbb;word-break:break-all;text-align:center;margin-top:2px">${base}?screen=${z.screen}</div>
         </div>
       </div>`).join('');
     QR_ZONES[group].forEach((z,i)=>makeQR(`qr-${group}-${i}`, `${base}?screen=${z.screen}`, 220));
